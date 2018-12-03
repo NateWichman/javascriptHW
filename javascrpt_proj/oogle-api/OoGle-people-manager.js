@@ -31,21 +31,25 @@ app.get('/', (req, res) => {
 
 app.get('/:id', (req, res) => {
     const id = req.params.id;
+    //Will hold the programmers with the same ID #
     var temp = [];
+    //Counting variable for for loop
     var i = 0;
+    //counting variable for temp array
     var k = 0;
+    //Adding all programmers with the same ID number as the input to temp array
     for (i = 0; i < database.length; i++) {
         if (id == database[i].SID) {
-            temp[k] = database[i];
+            temp[k] = database[i]; 
             k++;
         }
     }
+    //sending temp array to the user
     res.send(temp);
-    //res.send(`Fill me in to return values with ID: ${id}`);
 });
 
 app.put('/:id', (req, res) => {
-  const id = req.params.id;
+    const id = req.params.id;
     database.add(id);
     res.send(database);
     //res.send(`Fill me in to update values with ID: ${id}`);
@@ -63,7 +67,6 @@ app.listen(port, () => {
     database[1] = new Object();
     database[1].firstName = "tommy";
     database[1].SID = "2";
-    console.log(database[1].firstName);
     console.log(database);
 
 });
